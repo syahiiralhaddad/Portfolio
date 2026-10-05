@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Portfolio of Alwiyah Nur Syahira Alhaddad, Electrical Engineering graduate from Universitas Indonesia.">
+<style>[hidden]{display:none!important}img{max-width:100%}body{margin:0}</style>
+<title>Syahira Portfolio</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: Apple product-page rhythm — frosted nav, typographic hero, pinned scroll story with portraits, highlight gallery, about with animated portrait, experience viewer with opening laptop, case-study projects on a black stage, contact with CV + form */
+:root{
+  --bg:#fbfbfd; --bg-alt:#f5f5f7; --card:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7;
+  --accent:#0071e3; --accent-hover:#0077ed; --nav:rgba(251,251,253,.72);
+  --stage-bg:#000000; --stage-card:#141416; --stage-fg:#f5f5f7; --stage-muted:#86868b;
+  --photo-bg:#18171a;
+  --grad:linear-gradient(100deg,#0a84ff 0%,#5e5ce6 45%,#bf5af2 75%,#ff375f 100%);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
+  --radius:28px; --ease:cubic-bezier(.22,1,.36,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000000; --bg-alt:#101012; --card:#1c1c1e; --fg:#f5f5f7; --muted:#98989d; --line:#3a3a3c;
+  --accent:#2997ff; --accent-hover:#47a6ff; --nav:rgba(22,22,23,.72); --stage-bg:#0b0b0c; --stage-card:#1c1c1e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --bg-alt:#101012; --card:#1c1c1e; --fg:#f5f5f7; --muted:#98989d; --line:#3a3a3c;
+  --accent:#2997ff; --accent-hover:#47a6ff; --nav:rgba(22,22,23,.72); --stage-bg:#0b0b0c; --stage-card:#1c1c1e; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.47;letter-spacing:-.022em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.03em}
+p{margin:0}
+.wrap{max-width:1024px;margin:0 auto;padding-inline:22px}
+.wide{max-width:1200px;margin:0 auto;padding-inline:22px}
+
+/* ── Motion system ─────────────────────────────── */
+.js .rv{opacity:0;transform:translateY(48px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.zoom{transform:scale(.92) translateY(30px)}
+.js .rv.zoom.in{transform:none}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.split .w > span{display:inline-block}
+.js .split .w > span{transform:translateY(105%);transition:transform 1s var(--ease);transition-delay:calc(var(--i) * 70ms)}
+.js .split.in .w > span{transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .split .w > span{opacity:1!important;transform:none!important}
+}
+
+/* Global nav */
+.gnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--nav);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color .3s}
+.gnav.scrolled{border-bottom-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.gnav .row{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
+.brand{font-weight:600;font-size:17px;color:var(--fg);letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.brand:hover{text-decoration:none}
+.links{display:flex;gap:26px;align-items:center;flex:0 0 auto}
+.links a{color:var(--fg);font-size:13px;opacity:.85}
+.links a:hover{opacity:1;text-decoration:none}
+.links a.pill{color:#fff;opacity:1}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-size:13px;font-weight:500;padding:5px 13px;border-radius:980px;border:0;cursor:pointer;font-family:inherit;letter-spacing:-.01em;transition:background .2s,transform .2s}
+.pill:hover{background:var(--accent-hover);text-decoration:none}
+.pill:active{transform:scale(.97)}
+.pill.lg{font-size:17px;padding:12px 24px}
+.pill.ghost{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.pill.ghost:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+@media (max-width:860px){.links a:not(.pill){display:none}}
+
+/* Hero */
+.hero{text-align:center;padding-block:88px 72px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:60%;width:min(900px,120vw);height:420px;transform:translate(-50%,-50%);background:var(--grad);filter:blur(120px);opacity:.16;border-radius:50%;pointer-events:none;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(-54%,-50%) scale(1)}to{transform:translate(-46%,-46%) scale(1.12)}}
+.hero > *{position:relative}
+.eyebrow{font-size:clamp(17px,2vw,21px);font-weight:600;color:var(--muted);letter-spacing:-.01em}
+.hero h1{font-size:clamp(72px,15vw,168px);font-weight:700;line-height:1;letter-spacing:-.05em;margin-top:10px;background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em;animation:sheen 8s ease-in-out infinite alternate}
+@keyframes sheen{from{background-position:0% 50%}to{background-position:100% 50%}}
+.hero .tag{font-size:clamp(24px,3.6vw,40px);font-weight:600;line-height:1.1;margin-top:14px}
+.hero .sub{font-size:clamp(17px,2vw,21px);color:var(--muted);max-width:600px;margin:18px auto 0}
+.ctas{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:28px;font-size:19px}
+.ctas a::after{content:" ›"}
+.load{animation:load 1.2s var(--ease) both;animation-delay:var(--d,0s)}
+@keyframes load{from{opacity:0;transform:translateY(28px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.hero h1.load{animation:load 1.3s var(--ease) both,sheen 8s ease-in-out 1.3s infinite alternate}
+
+/* Pinned scroll story */
+.story{height:165vh;position:relative}
+
+.pin{position:sticky;top:calc(52px + env(safe-area-inset-top,0px));height:calc(100vh - 52px);height:calc(100svh - 52px);display:grid;place-items:center;overflow:hidden}
+.frame{position:relative;width:100%;height:100%;background:var(--photo-bg);overflow:hidden;color:#f5f5f7;
+  transform:scale(var(--s,1));border-radius:var(--r,0px);will-change:transform}
+.shots{position:absolute;inset:0}
+.shots img{position:absolute;right:4%;bottom:0;height:100%;width:auto;max-width:62%;object-fit:contain;object-position:bottom right;opacity:0;transform:scale(1.06);transition:opacity 1s var(--ease),transform 2.4s var(--ease);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.shots img.on{opacity:1;transform:none}
+.frame::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 15% 60%,rgba(94,92,230,.22),transparent 70%);pointer-events:none}
+.lines{position:absolute;left:clamp(22px,7vw,110px);top:50%;transform:translateY(-50%);width:min(46%,520px);z-index:2}
+.line{position:absolute;left:0;top:50%;transform:translateY(calc(-50% + 30px));opacity:0;transition:opacity .8s var(--ease),transform 1s var(--ease)}
+.line.on{opacity:1;transform:translateY(-50%)}
+.line .k{font-size:14px;font-weight:600;letter-spacing:.02em;color:#a1a1a6}
+.line h2{font-size:clamp(40px,5.6vw,72px);font-weight:700;line-height:1.03;margin-top:10px}
+.line h2 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.line h1{font-size:clamp(64px,9vw,128px);font-weight:700;line-height:1;letter-spacing:-.05em;margin-top:8px;padding-bottom:.06em}
+.line h1 span{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s ease-in-out infinite alternate}
+.line .tagl{font-size:clamp(22px,2.4vw,30px);font-weight:600;color:#f5f5f7;line-height:1.15;max-width:none}
+.line .ctas{justify-content:flex-start;margin-top:22px;font-size:17px}
+.line .ctas a{color:#2997ff}
+.line p{font-size:clamp(17px,1.7vw,21px);color:#c7c7cc;margin-top:16px;max-width:30ch;line-height:1.4}
+.progress{position:absolute;left:clamp(22px,7vw,110px);bottom:32px;display:flex;gap:8px;z-index:2}
+.progress i{width:28px;height:3px;border-radius:3px;background:rgba(255,255,255,.22);overflow:hidden;position:relative}
+.progress i::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(var(--p,0));transform-origin:left}
+.scroll-hint{position:absolute;right:24px;bottom:28px;font-size:12px;color:#a1a1a6;z-index:2;transition:opacity .4s}
+@media (max-width:760px){
+  .shots img{right:50%;transform:translateX(50%) scale(1.06);max-width:none;height:74%;top:0;bottom:auto;
+    -webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 100%);mask-image:linear-gradient(180deg,#000 60%,transparent 100%)}
+  .shots img.on{transform:translateX(50%)}
+  .lines{top:auto;bottom:64px;transform:none;width:auto;right:22px;height:200px}
+  .line.intro h1{font-size:56px}
+  .line.intro p:not(.tagl){display:none}
+  .line.intro .tagl{font-size:20px;margin-top:6px}
+  .line{top:auto;bottom:0;transform:translateY(24px)}
+  .line.on{transform:none}
+  .scroll-hint{display:none}
+}
+
+/* Section heads */
+section{padding-block:120px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:44px}
+.h2{font-size:clamp(40px,6vw,64px);font-weight:700;line-height:1.05}
+.lede{font-size:clamp(19px,2.2vw,24px);color:var(--muted);font-weight:500;line-height:1.35;max-width:640px}
+.lede strong{color:var(--fg);font-weight:600}
+
+/* Highlights gallery */
+.hl{background:var(--bg-alt)}
+.gallery{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(22px,calc((100vw - 1200px)/2 + 22px)) 24px;scrollbar-width:none;scroll-padding-inline:max(22px,calc((100vw - 1200px)/2 + 22px))}
+.gallery::-webkit-scrollbar{display:none}
+.hcard{flex:0 0 min(78vw,340px);scroll-snap-align:start;background:var(--card);border-radius:var(--radius);padding:34px 30px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:transform .5s var(--ease)}
+.hcard:hover{transform:scale(1.015)}
+.hcard .k{font-size:14px;font-weight:600;color:var(--muted)}
+.hcard .num{font-size:clamp(52px,6.4vw,72px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.hcard .num.sm{font-size:clamp(40px,4.8vw,52px);line-height:1.02}
+.hcard .num.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hcard h3{font-size:22px;font-weight:600;line-height:1.2}
+.hcard p{color:var(--muted);font-size:16px;margin-top:8px}
+.gctl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:6px}
+.dots{display:flex;gap:10px;background:color-mix(in srgb,var(--fg) 8%,transparent);padding:10px 16px;border-radius:980px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:color-mix(in srgb,var(--fg) 35%,transparent);cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:36px;background:var(--fg)}
+.arrow{width:36px;height:36px;border-radius:99px;border:0;background:color-mix(in srgb,var(--fg) 8%,transparent);color:var(--fg);font-size:18px;cursor:pointer}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:64px;align-items:center}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:var(--radius);background:var(--photo-bg);position:relative;overflow:hidden;clip-path:inset(0 round var(--radius))}
+.js .portrait.rv{opacity:1;transform:none;clip-path:inset(18% 10% 0 10% round var(--radius));transition:clip-path 1.4s var(--ease)}
+.js .portrait.rv.in{clip-path:inset(0 round var(--radius))}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;opacity:0;transform:scale(1.12);transition:opacity 1.2s ease}
+.portrait img.on{opacity:1;animation:kb 9s var(--ease) both}
+@keyframes kb{from{transform:scale(1.12) translateY(2%)}to{transform:scale(1.02) translateY(0)}}
+.pdots{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:6px;z-index:2;background:rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:7px 10px;border-radius:99px}
+.pdots i{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45);transition:width .4s,background .4s}
+.pdots i.on{width:20px;background:#fff}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;border-top:1px solid var(--line);padding-top:24px}
+.facts dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.facts dd{margin:6px 0 0;font-size:19px;font-weight:600}
+.traits{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.traits span{font-size:14px;font-weight:500;padding:7px 14px;border-radius:980px;background:var(--bg-alt)}
+@media (max-width:820px){.about{grid-template-columns:1fr;gap:40px}.portrait{max-width:420px}.facts{grid-template-columns:1fr 1fr}}
+
+/* Experience viewer */
+.viewer{background:var(--bg-alt);border-radius:36px;padding:clamp(20px,4vw,48px)}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tabbar{position:relative}
+.tabbar.fr .tabs{-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
+.tabbar.fl .tabs{-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%)}
+.tabbar.fl.fr .tabs{-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent)}
+.tnav{position:absolute;top:50%;transform:translateY(-55%);z-index:2;width:36px;height:36px;border-radius:99px;border:0;background:var(--fg);color:var(--bg);font-size:20px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.tnav.l{left:-6px}.tnav.r{right:-6px}
+.tab{flex:0 0 auto;border:0;background:var(--card);color:var(--fg);font:inherit;font-size:15px;font-weight:500;padding:10px 18px;border-radius:980px;cursor:pointer;transition:background .25s,color .25s}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg)}
+.xp{margin-top:40px}
+.xp-body{display:grid;grid-template-columns:1fr 280px;gap:40px;margin-top:48px;animation:fade .7s var(--ease) both .15s}
+.xp-body:first-child{margin-top:0}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.xp .when{font-size:14px;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.xp h3{font-size:clamp(28px,3.5vw,40px);font-weight:700;line-height:1.1;margin-top:8px}
+.xp .co{font-size:19px;font-weight:600;margin-top:6px}
+.xp .about-co{color:var(--muted);font-size:15px;margin-top:10px;max-width:60ch}
+.xp ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+.xp li{padding-left:22px;position:relative;max-width:62ch}
+.xp li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:99px;background:var(--accent)}
+.stat{background:var(--card);border-radius:24px;padding:28px;align-self:start}
+.stat .n{font-size:64px;font-weight:700;letter-spacing:-.045em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.stat p{color:var(--muted);font-size:15px}
+.stat .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.chip{font-size:12px;font-weight:500;padding:5px 11px;border-radius:980px;border:1px solid var(--line);color:var(--fg)}
+@media (max-width:820px){.xp-body{grid-template-columns:1fr}}
+
+/* Laptop frame + slider (lid opens on view) */
+.mac{max-width:780px;margin:0 auto;perspective:1800px}
+.mac .lid{background:linear-gradient(180deg,#2a2a2d,#111113);border-radius:22px 22px 10px 10px;padding:clamp(8px,1.6vw,14px);padding-top:clamp(14px,2.4vw,22px);position:relative;box-shadow:0 30px 60px -28px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06);transform-origin:50% 100%;transition:transform 1.4s var(--ease)}
+.mac.shut .lid{transform:rotateX(-78deg)}
+.mac .lid::before{content:"";position:absolute;top:clamp(5px,1vw,8px);left:50%;width:6px;height:6px;margin-left:-3px;border-radius:99px;background:#3a3a3e}
+.mac .screen{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:6px;overflow:hidden;background:#000}
+.mac .screen::after{content:"";position:absolute;inset:0;background:#000;opacity:0;transition:opacity .8s ease .5s;pointer-events:none}
+.mac.shut .screen::after{opacity:1;transition-delay:0s}
+.mac .track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.mac .track::-webkit-scrollbar{display:none}
+.mac .slide{flex:0 0 100%;height:100%;scroll-snap-align:start;position:relative;overflow:hidden;background:#0d0d0f}
+.mac .slide img{position:relative;width:100%;height:100%;object-fit:contain;display:block}
+.mac .bgblur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(24px) brightness(.55);transform:scale(1.1)}
+.mac .base{height:clamp(10px,1.6vw,16px);margin:0 -5%;background:linear-gradient(180deg,#d8d8dc,#9d9da2);border-radius:0 0 18px 18px;position:relative}
+.mac .base::before{content:"";position:absolute;top:0;left:50%;width:16%;height:40%;transform:translateX(-50%);background:#8a8a8f;border-radius:0 0 8px 8px}
+.mac .nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:99px;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.85}
+.mac .nav:hover{opacity:1}
+.mac .nav.l{left:10px}.mac .nav.r{right:10px}
+.mac .count{position:absolute;right:12px;bottom:10px;font-size:12px;color:#fff;background:rgba(0,0,0,.5);padding:3px 9px;border-radius:99px;font-variant-numeric:tabular-nums}
+.mac-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.mac-dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:color-mix(in srgb,var(--fg) 30%,transparent);cursor:pointer;transition:width .3s,background .3s}
+.mac-dots button[aria-current="true"]{width:28px;background:var(--fg)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sk{background:var(--bg-alt);border-radius:var(--radius);padding:30px;min-width:0}
+.sk h3{font-size:24px;font-weight:600}
+.sk p{color:var(--muted);font-size:15px;margin-top:6px}
+.sk .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sk .chips span{font-size:14px;padding:7px 13px;border-radius:980px;background:var(--card);color:var(--fg)}
+.certs{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.certs li{display:flex;justify-content:space-between;gap:12px;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.certs li span{color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.skills{grid-template-columns:1fr}}
+
+/* Compare (education / org) */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cmp{border-top:2px solid var(--fg);padding-top:22px}
+.cmp .badge{display:inline-block;font-size:12px;font-weight:600;color:#bf4800;letter-spacing:.02em}
+.cmp h3{font-size:28px;font-weight:700;margin-top:6px}
+.cmp .sub{color:var(--muted);margin-top:4px}
+.cmp dl{margin:22px 0 0;display:grid;gap:16px}
+.cmp dt{font-size:13px;color:var(--muted)}
+.cmp dd{margin:2px 0 0;font-size:17px;font-weight:500}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cmp .badge{color:#ff9f0a}}
+:root[data-theme="dark"] .cmp .badge{color:#ff9f0a}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+
+/* Projects stage — case studies */
+.stage{background:var(--stage-bg);color:var(--stage-fg)}
+.stage .lede{color:var(--stage-muted)}
+.stage .lede strong{color:var(--stage-fg)}
+.stage a{color:#2997ff}
+.proj{display:grid;gap:26px}
+.case{background:var(--stage-card);border-radius:var(--radius);padding:clamp(26px,4vw,52px)}
+.case-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.case .when{font-size:14px;color:var(--stage-muted);font-weight:500}
+.case h3{font-size:clamp(26px,3.2vw,38px);font-weight:700;line-height:1.12;margin-top:8px;max-width:24ch}
+.case .gh{font-size:17px;white-space:nowrap}
+.case .gh::after{content:" ↗"}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+.flow h4,.results .rlabel{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--stage-muted);font-weight:600;display:flex;align-items:center;gap:8px}
+.flow h4 i,.results .rlabel i{font-style:normal;width:20px;height:20px;border-radius:99px;display:grid;place-items:center;font-size:11px;background:rgba(255,255,255,.1);color:var(--stage-fg)}
+.flow p{margin-top:10px;font-size:16px;color:#d2d2d7;line-height:1.5}
+.flow .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.flow .stack span{font-size:12px;padding:5px 11px;border-radius:980px;background:rgba(255,255,255,.08);color:var(--stage-fg)}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;background:rgba(255,255,255,.04);border-radius:20px;padding:24px}
+.results .rlabel{grid-column:1/-1}
+.results .v{font-size:clamp(34px,4.4vw,52px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.results .v.t{font-size:clamp(22px,2.4vw,28px);line-height:1.15}
+.results .v.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.results .l{font-size:14px;color:var(--stage-muted);margin-top:6px}
+@media (max-width:820px){.flow{grid-template-columns:1fr}.results{grid-template-columns:1fr 1fr}}
+
+/* Contact */
+.contact{background:var(--bg-alt)}
+.contact-head{text-align:center}
+.contact .h2.big{font-size:clamp(44px,8vw,96px)}
+.contact .h2.big span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;margin-top:56px}
+.ccard{background:var(--card);border-radius:var(--radius);padding:clamp(24px,3.4vw,40px);min-width:0}
+.ccard h3{font-size:24px;font-weight:600}
+.ccard .hint{color:var(--muted);font-size:15px;margin-top:6px}
+.cv{display:flex;align-items:center;gap:16px;margin-top:22px;padding:16px;border-radius:18px;background:var(--bg-alt)}
+.cv .doc{flex:0 0 46px;height:58px;border-radius:8px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:.04em}
+.cv .meta{min-width:0;flex:1}
+.cv .meta b{display:block;font-size:15px;overflow-wrap:anywhere}
+.cv .meta span{font-size:13px;color:var(--muted)}
+.row-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.mail{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:22px;flex-wrap:wrap}
+.mail code{font-family:inherit;font-size:17px;font-weight:500;user-select:all;overflow-wrap:anywhere}
+.social{display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;font-size:17px}
+.social a::after{content:" ↗"}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--fg);background:var(--bg-alt);border:1px solid transparent;border-radius:12px;padding:13px 14px;width:100%;transition:border-color .2s,background .2s}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:var(--card)}
+.form .send{grid-column:1/-1;justify-self:start}
+.status{grid-column:1/-1;font-size:15px;color:var(--muted)}
+.status b{color:var(--fg)}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.form{grid-template-columns:1fr}}
+
+/* Footer */
+footer{background:var(--bg-alt);padding-block:22px 34px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+footer .base{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+
+<nav class="gnav" id="gnav" aria-label="Main">
+  <div class="wide row">
+    <a class="brand" href="#top">Alwiyah Nur Syahira Alhaddad</a>
+    <div class="links">
+      <a href="#highlights">Highlights</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a class="pill" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- PINNED STORY -->
+  <section class="story" id="story" aria-label="Introduction" style="padding:0;margin-top:12px">
+    <div class="pin">
+      <div class="frame" id="frame">
+        <div class="shots" id="shots">
+          <img class="on" src="img/portrait-4.jpg" alt="Portrait of Syahira with arms crossed, wearing a white shirt and a beige blazer over her shoulders">
+        </div>
+        <div class="lines" id="lines">
+          <div class="line on intro"><div class="k load" style="--d:.1s">Electrical Engineering · Universitas Indonesia</div><h1 class="load" style="--d:.2s"><span>Syahira.</span></h1><p class="tagl load" style="--d:.4s">Electrical engineer. Data-driven.<br>Built for impact.</p><p class="load" style="--d:.55s">She loves learning something new, adapts quickly to every team she joins, and treats each role as a step to build her career.</p><div class="ctas load" style="--d:.7s"><a href="#experience">See experience</a><a href="#contact">Get in touch</a></div></div>
+          <div class="line"><div class="k">Curious</div><h2>Learner<br>by <span>nature.</span></h2><p>Every new role starts with something to learn. That's the part she enjoys most.</p></div>
+          <div class="line"><div class="k">Adaptable</div><h2>Fast to<br><span>adapt.</span></h2><p>Different companies, different backgrounds. The same technical approach.</p></div>
+          <div class="line"><div class="k">Next</div><h2>Ready for<br><span>what's next.</span></h2><p>Building a career one new skill at a time.</p></div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="scroll-hint" id="hint">Scroll ↓</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="hl" id="highlights">
+    <div class="wide sec-head">
+      <h2 class="h2 split">Highlight after highlight.</h2>
+    </div>
+    <div class="gallery" id="gallery">
+      <article class="hcard rv"><div><div class="k">Award</div><div class="num sm g" style="margin-top:14px">Best Presenter</div></div><div><h3>FORTEI-ICEE 2026.</h3><p>Recognized at an international conference on electrical engineering.</p></div></article>
+      <article class="hcard rv" style="--d:.08s"><div><div class="k">GPA</div><div class="num" style="margin-top:14px" data-count="3.60" data-dec="2">3.60</div></div><div><h3>Out of 4.00.</h3><p>Electrical Engineering, Universitas Indonesia.</p></div></article>
+      <article class="hcard rv" style="--d:.16s"><div><div class="k">Professional experience</div><div class="num g" style="margin-top:14px" data-count="5">5</div></div><div><h3>Companies and institutions.</h3><p>OJK, Aspen Medical, Schneider Electric Indonesia, Pertamina International Shipping and Telkom Indonesia.</p></div></article>
+      <article class="hcard rv" style="--d:.24s"><div><div class="k">Organization experience</div><div class="num" style="margin-top:14px" data-count="2">2</div></div><div><h3>Organizations.</h3><p>Business Analyst Officer at Indonesian Youth Diplomacy, and Student Affairs staff at IME FTUI.</p></div></article>
+      <article class="hcard rv" style="--d:.32s"><div><div class="k">Teaching</div><div class="num sm g" style="margin-top:14px">Assistant Lecturer</div></div><div><h3>Electromagnetics.</h3><p>Academic year 2024/2025, Universitas Indonesia.</p></div></article>
+      <article class="hcard rv" style="--d:.4s"><div><div class="k">Certifications</div><div class="num" style="margin-top:14px" data-count="5">5</div></div><div><h3>Certificates earned.</h3><p>Including IBM Data Science Professional and Nokia Bell Labs E2E 5G Foundation.</p></div></article>
+    </div>
+    <div class="gctl">
+      <button class="arrow" id="prev" aria-label="Previous highlight">‹</button>
+      <div class="dots" id="dots" aria-label="Highlight navigation"></div>
+      <button class="arrow" id="next" aria-label="Next highlight">›</button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="portrait rv" id="portrait" aria-label="Portrait of Syahira">
+        <img class="on" src="img/portrait-4.jpg" alt="Portrait of Syahira">
+      </div>
+      <div>
+        <h2 class="h2 split">Meet Syahira.</h2>
+        <p class="lede rv" style="margin-top:18px">An electrical engineering graduate from Universitas Indonesia with an <strong>analytical, detail-oriented mindset</strong>. She turns technical findings into clear recommendations for stakeholders, picks up new tools quickly, and leads cross-functional work <strong>from planning to execution</strong>.</p>
+        <div class="traits rv" style="--d:.1s"><span>Adaptive</span><span>Critical thinker</span><span>Problem-solver</span><span>Collaborative</span><span>Detail-oriented</span></div>
+        <dl class="facts rv" style="--d:.2s">
+          <div><dt>Degree</dt><dd>B.Eng. Electrical</dd></div>
+          <div><dt>Focus</dt><dd>Telecommunications</dd></div>
+          <div><dt>Languages</dt><dd>Indonesian, English</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2 split">Take a closer look.</h2><p class="lede rv">Five roles across regulators, hospitals, factories, fleets and networks.</p></div>
+      <div class="viewer rv zoom">
+        <div class="tabbar" id="tabbar"><button class="tnav l" id="tl" type="button" aria-label="Scroll tabs left" hidden>‹</button><div class="tabs" role="tablist" id="tabs" aria-label="Work experience"></div><button class="tnav r" id="tr" type="button" aria-label="Scroll tabs right" hidden>›</button></div>
+        <div id="panel" role="tabpanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding-top:0">
+    <div class="wide">
+      <div class="sec-head"><h2 class="h2 split">Everything she works with.</h2></div>
+      <div class="skills">
+        <div class="sk rv"><h3>Core</h3><p>What she brings to a team.</p>
+          <div class="chips"><span>Project Management</span><span>Business Analysis</span><span>Data Analysis</span><span>Data Science</span><span>Machine Learning</span><span>Network Analysis</span><span>Root Cause Analysis</span><span>Dashboard Development</span><span>Data Visualization</span><span>Automation (Power Platform)</span><span>Process Improvement</span><span>Quality Assurance</span><span>Documentation &amp; Compliance</span><span>Product Pricing &amp; Strategy</span></div></div>
+        <div class="sk rv" style="--d:.1s"><h3>Tools</h3><p>What she builds with.</p>
+          <div class="chips"><span>Python</span><span>SQL</span><span>Power BI</span><span>Power Apps</span><span>Power Automate</span><span>Tableau</span><span>Oracle</span><span>SAP MM</span><span>Salesforce</span><span>Cisco vManage</span><span>MATLAB</span><span>Figma</span><span>Canva</span><span>Microsoft Office</span><span>Google Workspace</span></div></div>
+        <div class="sk rv" style="--d:.2s"><h3>Certifications</h3><p>Verified along the way.</p>
+          <ul class="certs">
+            <li>IBM Data Science Professional<span>May 2026</span></li>
+            <li>IBM AI Product Manager<span>Nov 2025</span></li>
+            <li>Schneider Electric Professional Trainings<span>Aug 2025</span></li>
+            <li>Nokia Bell Labs E2E 5G Foundation<span>Dec 2024</span></li>
+            <li>Accenture Digital Skills: Digital Marketing<span>Jun 2023</span></li>
+          </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION / ORG -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2 split">Beyond the job.</h2></div>
+      <div class="compare">
+        <div class="cmp rv">
+          <span class="badge">Education</span>
+          <h3>Universitas Indonesia</h3>
+          <p class="sub">Electrical Engineering · Telecommunications</p>
+          <dl>
+            <div><dt>Years</dt><dd>2022 – 2026</dd></div>
+            <div><dt>GPA</dt><dd>3.60 / 4.00</dd></div>
+            <div><dt>Teaching</dt><dd>Assistant Lecturer, Electromagnetics (2024/2025)</dd></div>
+            <div><dt>Award</dt><dd>Best Presenter, FORTEI-ICEE 2026</dd></div>
+          </dl>
+        </div>
+        <div class="cmp rv" style="--d:.12s">
+          <span class="badge">Organization</span>
+          <h3>Indonesian Youth Diplomacy</h3>
+          <p class="sub">Business Analyst Officer · February – December 2024</p>
+          <dl>
+            <div><dt>Flagship work</dt><dd>Sponsorship and pitch materials for Gala Indonesia Emas 2045</dd></div>
+            <div><dt>Role</dt><dd>Event rundowns, cross-functional coordination and milestone tracking</dd></div>
+            <div><dt>Also</dt><dd>Staff of Student Affairs, Ikatan Mahasiswa Elektro FTUI (2023)</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS — case studies -->
+  <section class="stage" id="projects">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2 split">Projects that perform.</h2><p class="lede rv">Each one from problem to result. <strong>Code on GitHub.</strong></p></div>
+      <div class="proj">
+
+        <article class="case rv zoom">
+          <div class="case-top">
+            <div><div class="when">2025 – 2026</div><h3>5G Traffic Classification with Explainable AI</h3></div>
+            <a class="gh" href="https://github.com/syahiiralhaddad">View on GitHub</a>
+          </div>
+          <div class="flow">
+            <div><h4><i>1</i>Problem</h4><p>5G networks carry traffic from many service classes, and operators need to classify it accurately. Black-box models are hard to trust when nobody can see why a prediction was made.</p></div>
+            <div><h4><i>2</i>Approach</h4><p>A stacking ensemble with KNN, SVM and Random Forest as base learners and Logistic Regression as meta-learner. LLM-based feature explanations make each prediction readable, and time series analysis compares weekday and weekend traffic.</p></div>
+            <div><h4><i>3</i>Tools</h4><p>An interactive Flask dashboard with live training progress, temporal analytics and XAI insights.</p><div class="stack"><span>Python</span><span>scikit-learn</span><span>Flask</span><span>XAI</span><span>Time series</span></div></div>
+          </div>
+          <div class="results">
+            <div class="rlabel"><i>4</i>Result</div>
+            <div><div class="v g" data-count="99.95" data-dec="2" data-suf="%">99.95%</div><div class="l">Test accuracy</div></div>
+            <div><div class="v" data-count="65766" data-sep="1">65,766</div><div class="l">Traffic records</div></div>
+            <div><div class="v t">Best Presenter</div><div class="l">FORTEI-ICEE 2026</div></div>
+          </div>
+        </article>
+
+        <article class="case rv zoom">
+          <div class="case-top">
+            <div><div class="when">October 2024 · Group project</div><h3>Battery Remaining Useful Life Prediction</h3></div>
+            <a class="gh" href="https://github.com/syahiiralhaddad/battery-rul-prediction">View on GitHub</a>
+          </div>
+          <div class="flow">
+            <div><h4><i>1</i>Problem</h4><p>Knowing how many charge cycles a Li-ion battery has left lets teams plan replacement before it fails.</p></div>
+            <div><h4><i>2</i>Approach</h4><p>Linear and Ridge Regression implemented from scratch with the Normal Equation, after data cleaning, z-score scaling and correlation analysis. Six regularization strengths were tested to see how α affects performance.</p></div>
+            <div><h4><i>3</i>Tools</h4><p>Pure NumPy for the models, no ML library.</p><div class="stack"><span>Python</span><span>NumPy</span><span>Regression</span></div></div>
+          </div>
+          <div class="results">
+            <div class="rlabel"><i>4</i>Result</div>
+            <div><div class="v g" data-count="0.9998" data-dec="4">0.9998</div><div class="l">Test R²</div></div>
+            <div><div class="v" data-count="3.35" data-dec="2">3.35</div><div class="l">MAE, in cycles</div></div>
+            <div><div class="v" data-count="15064" data-sep="1">15,064</div><div class="l">Battery cycles analyzed</div></div>
+          </div>
+        </article>
+
+        <article class="case rv zoom">
+          <div class="case-top">
+            <div><div class="when">August 2024</div><h3>Bandwidth Optimization for Cisco SD-WAN</h3></div>
+            <a class="gh" href="https://github.com/syahiiralhaddad">View on GitHub</a>
+          </div>
+          <div class="flow">
+            <div><h4><i>1</i>Problem</h4><p>Bandwidth allocated to corporate SD-WAN sites often doesn't match actual usage, wasting capacity at some sites and congesting others.</p></div>
+            <div><h4><i>2</i>Approach</h4><p>Lag, rolling and utilization features engineered from throughput patterns. A Random Forest tuned with time-series cross-validation recommends allocation per interface, while SARIMAX forecasting and 4-level threshold detection flag usage spikes.</p></div>
+            <div><h4><i>3</i>Tools</h4><p>Cisco vManage interface data across 8 hubs. Only aggregate results are shared.</p><div class="stack"><span>Python</span><span>Random Forest</span><span>SARIMAX</span><span>Cisco vManage</span></div></div>
+          </div>
+          <div class="results">
+            <div class="rlabel"><i>4</i>Result</div>
+            <div><div class="v g" data-count="69" data-pre="−" data-suf="%">−69%</div><div class="l">Forecast error vs. baseline</div></div>
+            <div><div class="v" data-count="0.90" data-dec="2">0.90</div><div class="l">R²</div></div>
+            <div><div class="v" data-count="8">8</div><div class="l">Hubs covered</div></div>
+          </div>
+        </article>
+
+        <article class="case rv zoom">
+          <div class="case-top">
+            <div><div class="when">Mobile app</div><h3>BLEc Space: Controlling an ESP32 over Bluetooth</h3></div>
+            <a class="gh" href="https://github.com/syahiiralhaddad">View on GitHub</a>
+          </div>
+          <div class="flow">
+            <div><h4><i>1</i>Problem</h4><p>Hardware projects need a simple way to send commands to a microcontroller from a phone, without cables or a laptop in between.</p></div>
+            <div><h4><i>2</i>Approach</h4><p>An Android app that pairs with an ESP32 over Bluetooth Low Energy and sends control commands from one screen. The interface was later redesigned to be cleaner and easier to use.</p></div>
+            <div><h4><i>3</i>Tools</h4><p>Cross-platform UI with a BLE connection layer.</p><div class="stack"><span>Flutter</span><span>Dart</span><span>Bluetooth Low Energy</span><span>ESP32</span></div></div>
+          </div>
+          <div class="results">
+            <div class="rlabel"><i>4</i>Result</div>
+            <div><div class="v t">Android</div><div class="l">Platform</div></div>
+            <div><div class="v t">BLE</div><div class="l">Wireless link to ESP32</div></div>
+            <div><div class="v t">Redesigned UI</div><div class="l">Cleaner control screen</div></div>
+          </div>
+        </article>
+
+        <article class="case rv zoom">
+          <div class="case-top">
+            <div><div class="when">Group project</div><h3>Wavelet Image Coding Simulator</h3></div>
+            <a class="gh" href="https://github.com/syahiiralhaddad">View on GitHub</a>
+          </div>
+          <div class="flow">
+            <div><h4><i>1</i>Problem</h4><p>Wavelet-based image compression is hard to understand from equations alone. Students need to see what each step does to an image.</p></div>
+            <div><h4><i>2</i>Approach</h4><p>A desktop GUI that runs a wavelet transform coding simulation on an image and shows the results visually, so each stage of compression can be compared side by side.</p></div>
+            <div><h4><i>3</i>Tools</h4><p>Built as an interactive app in MATLAB.</p><div class="stack"><span>MATLAB</span><span>App Designer</span><span>Wavelet Transform</span></div></div>
+          </div>
+          <div class="results">
+            <div class="rlabel"><i>4</i>Result</div>
+            <div><div class="v t">GUI</div><div class="l">Interactive simulation</div></div>
+            <div><div class="v t">Wavelet</div><div class="l">Transform-based coding</div></div>
+            <div><div class="v t">Visual</div><div class="l">Side-by-side comparison</div></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-head">
+        <h2 class="h2 big split">Let's build something great.</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="ccard rv">
+          <h3>Résumé</h3>
+          <p class="hint">Get the full CV as a PDF.</p>
+          <div class="row-actions">
+            <a class="pill lg" id="cvBtn" href="cv.pdf" download="CV_Alwiyah_Nur_Syahira_Alhaddad.pdf">Download CV</a>
+          </div>
+          <p class="status" id="cvStatus" style="margin-top:10px" aria-live="polite"></p>
+          <div class="mail">
+            <code id="email">syahiiralhaddad@gmail.com</code>
+            <button class="pill ghost" id="copy" type="button">Copy email</button>
+          </div>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/syahiralhaddad">LinkedIn</a>
+            <a href="https://github.com/syahiiralhaddad">GitHub</a>
+          </div>
+        </div>
+        <div class="ccard rv" style="--d:.12s">
+          <h3>Send a message</h3>
+          <p class="hint">Your message goes to syahiiralhaddad@gmail.com.</p>
+          <form class="form" id="form" novalidate>
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Your name" required autocomplete="name"></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email"></div>
+            <div class="field full"><label for="f-subject">Subject</label><input id="f-subject" name="subject" type="text" placeholder="What's this about?"></div>
+            <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Your message…" required></textarea></div>
+            <button class="pill lg send" type="submit">Send message</button>
+            <p class="status" id="formStatus" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap base"><span>© 2026 Alwiyah Nur Syahira Alhaddad.</span><span>Electrical Engineering · Universitas Indonesia</span></div>
+</footer>
+
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+  // ── Split headings into words for the rise animation
+  document.querySelectorAll('.split').forEach(h=>{
+    h.innerHTML=h.textContent.trim().split(/\s+/).map((w,i)=>`<span class="w"><span style="--i:${i}">${esc(w)}</span></span>`).join(' ');
+  });
+
+  // ── Count-up numbers
+  function countUp(el){
+    if(el.dataset.done)return;el.dataset.done=1;
+    const to=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.pre||'',suf=el.dataset.suf||'',sep=el.dataset.sep;
+    const fmt=v=>{let s=v.toFixed(dec);if(sep)s=Number(s).toLocaleString('en-US');return pre+s+suf};
+    if(reduce){el.textContent=fmt(to);return}
+    const t0=performance.now(),dur=1600;
+    const step=t=>{const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);el.textContent=fmt(to*e);if(k<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  }
+
+  // ── Reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(countUp);
+    if(e.target.matches('[data-count]'))countUp(e.target);
+    io.unobserve(e.target);
+  }),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv,.split').forEach(el=>io.observe(el));
+
+  // ── Nav border on scroll
+  const nav=document.getElementById('gnav');
+  const onNav=()=>nav.classList.toggle('scrolled',scrollY>8);
+
+  // ── Pinned story: frame grows, portraits + lines advance with scroll
+  const story=document.getElementById('story'),frame=document.getElementById('frame');
+  const shots=[...document.querySelectorAll('#shots img')],lines=[...document.querySelectorAll('#lines .line')];
+  const bars=[...document.querySelectorAll('#progress i')],hint=document.getElementById('hint');
+  let cur=0;
+  function onStory(){
+    const r=story.getBoundingClientRect(),pinH=frame.parentElement.clientHeight;
+    const total=r.height-pinH,p=Math.min(1,Math.max(0,-r.top/total));
+    const step=Math.max(110,innerHeight*.15),sc=Math.max(0,scrollY);   // one chapter per scroll
+    const g=Math.min(1,sc/(step*.6));    // grow phase
+    const e=1-Math.pow(1-g,3);
+    frame.style.setProperty('--s',(0.94+0.06*e).toFixed(4));
+    frame.style.setProperty('--r',(36*(1-e)).toFixed(1)+'px');
+    const q=Math.min(4,sc/step+.3);
+    const idx=Math.min(3,Math.floor(q));
+    bars.forEach((b,i)=>b.style.setProperty('--p',Math.min(1,Math.max(0,q-i)).toFixed(3)));
+    hint.style.opacity=sc>20?0:1;
+    if(idx!==cur){lines[cur].classList.remove('on');cur=idx;lines[cur].classList.add('on')}
+  }
+  let ticking=false;
+  addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{onNav();onStory();ticking=false})},{passive:true});
+  addEventListener('resize',onStory);
+  onNav();onStory();
+
+
+  // ── Experience
+  const XP=[
+    {tab:"OJK",when:"August 2026 — Present",role:"Cybersecurity & Emerging Technology Risk Analyst Intern",co:"Otoritas Jasa Keuangan",about:"The independent state authority that regulates and supervises Indonesia's financial services sector.",
+     pts:["Developing a sector-level ransomware incident response playbook that gives commercial banks one escalation path, RACI matrix and decision tree during an active incident.","Reconstructing real banking incidents into kill chain flowcharts and attack timelines mapped against MITRE ATT&CK and NIST to find where detection and containment failed.","Assessing post-quantum cryptography risk exposure and turning regulatory analysis into policy recommendations reviewed up to Deputy Director level."],
+     n:"",nl:"A sector-wide incident response playbook for commercial banks, plus post-quantum cryptography risk analysis.",tags:["MITRE ATT&CK","NIST","PQC","Policy"],imgs:[]},
+    {tab:"Aspen Medical",when:"July 2026 — August 2026",role:"Project Control Engineer",co:"PT Aspen Medical Group Indonesia",about:"An Australian-based global healthcare company providing outsourced medical services, field hospitals and healthcare logistics.",
+     pts:["Established the company's first formal Tender SOP, coordinating vendor submissions and reviewing contract revisions against stakeholder comments.","Consolidated ICT and MEP documentation from 20+ contractors into a single Excel dashboard showing approval status and timelines.","Prepared project financial reports in Oracle and reconciled contracted quantities against materials received on site, catching discrepancies before invoicing."],
+     n:"20+",nl:"Contractors' documentation brought into one dashboard for the Project Manager.",tags:["Excel","Oracle","Tender SOP","Cost control"],imgs:["img/aspen-1.jpg","img/aspen-2.jpg"]},
+    {tab:"Schneider Electric Indonesia",when:"July 2025 — May 2026",role:"Issue to Prevention Engineer Intern",co:"PT Schneider Electric Indonesia",about:"An energy management and digital automation specialist delivering efficiency and smart factory solutions.",
+     pts:["Led the Issue to Prevention (I2P) program, resolving 50+ customer cases in Salesforce and building preventive action plans from recurring complaint patterns.","Replaced manual warranty return tracking with a Power Apps and Power Automate workflow that joins SAP and SharePoint data, now used by technical support and logistics, with Power BI dashboards for claim visibility.","Analyzed product performance and complaint data to find recurring failure drivers and presented quality and compliance recommendations."],
+     n:"50+",nl:"Customer cases resolved, each feeding a preventive action plan.",tags:["Salesforce","Power Apps","Power Automate","Power BI","SAP"],imgs:["img/schneider-1.jpg","img/schneider-2.jpg","img/schneider-3.jpg"]},
+    {tab:"Pertamina International Shipping",when:"February 2025 — March 2025",role:"Product Domestic I Operation Intern",co:"PT Pertamina International Shipping",about:"The integrated marine logistics subholding of Indonesia's state-owned oil company.",
+     pts:["Managed 50+ vessel certificates in the Port Management System, keeping documentation valid through on-hire and off-hire transitions.","Maintained a certification tracker that flagged renewals early so Marine, Operations and Legal could act ahead of deadlines.","Delivered fleet compliance reports showing where documentation delays caused downtime, with recommendations to shorten the renewal cycle."],
+     n:"50+",nl:"Vessel certificates kept valid across the domestic product fleet.",tags:["Compliance","Fleet ops","Reporting"],imgs:["img/pertamina-1.jpg"]},
+    {tab:"Telkom Indonesia",when:"July 2024 — August 2024",role:"Datacomm Product Management Intern",co:"PT Telkom Indonesia (Persero)",about:"Indonesia's largest state-owned telecommunications and digital infrastructure company.",
+     pts:["Analyzed bandwidth usage across 8 corporate hub-and-spoke networks with Cisco vManage and Python models to find sites where allocation didn't match usage.","Designed an Excel data center dashboard with network administrators, replacing manual reports with one network capacity view.","Managed the product pricing strategy timeline so pricing decisions were finalized ahead of the release window."],
+     n:"8",nl:"Corporate hub-and-spoke networks analyzed for bandwidth fit.",tags:["Cisco vManage","Python","SD-WAN","Pricing"],imgs:["img/telkom-1.jpg"]}
+  ];
+  const tabs=document.getElementById('tabs'),panel=document.getElementById('panel');
+  let viewerSeen=false;
+
+  function macHTML(x){
+    if(!x.imgs.length)return '';
+    const slides=x.imgs.map((src,i)=>`<div class="slide"><div class="bgblur" style="background-image:url('${esc(src)}')"></div><img src="${esc(src)}" alt="${esc(x.co)} work sample ${i+1}"></div>`);
+    const multi=slides.length>1;
+    return `<div class="mac${reduce?'':' shut'}"><div class="lid"><div class="screen"><div class="track">${slides.join('')}</div>${multi?`<button class="nav l" aria-label="Previous image">‹</button><button class="nav r" aria-label="Next image">›</button><span class="count">1 / ${slides.length}</span>`:''}</div></div><div class="base"></div></div>${multi?`<div class="mac-dots">${slides.map((_,i)=>`<button aria-label="Image ${i+1}"></button>`).join('')}</div>`:''}`;
+  }
+  function wireMac(root){
+    const mac=root.querySelector('.mac');if(!mac)return;
+    if(viewerSeen)setTimeout(()=>mac.classList.remove('shut'),60);
+    const track=root.querySelector('.track'),n=track.children.length;if(n<2)return;
+    const dots=[...root.querySelectorAll('.mac-dots button')],count=root.querySelector('.count');
+    const idx=()=>Math.round(track.scrollLeft/track.clientWidth);
+    const go=i=>track.scrollTo({left:((i+n)%n)*track.clientWidth});
+    const mark=()=>{const i=idx();dots.forEach((d,j)=>d.setAttribute('aria-current',j===i));count.textContent=`${i+1} / ${n}`};
+    root.querySelector('.nav.l').onclick=()=>go(idx()-1);
+    root.querySelector('.nav.r').onclick=()=>go(idx()+1);
+    dots.forEach((d,i)=>d.onclick=()=>go(i));
+    track.addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});
+    mark();
+  }
+  function show(i){
+    [...tabs.children].forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});
+    const x=XP[i];
+    panel.innerHTML=`<div class="xp">${macHTML(x)}<div class="xp-body"><div><div class="when">${x.when}</div><h3>${esc(x.role)}</h3><div class="co">${esc(x.co)}</div><p class="about-co">${esc(x.about)}</p><ul>${x.pts.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div><aside class="stat">${x.n?`<div class="n">${x.n}</div>`:''}<p>${esc(x.nl)}</p><div class="tags">${x.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></aside></div></div>`;
+    wireMac(panel);
+  }
+  XP.forEach((x,i)=>{const b=document.createElement('button');b.className='tab';b.setAttribute('role','tab');b.id='tab-'+i;b.textContent=x.tab;b.onclick=()=>show(i);
+    b.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=(i+(e.key==='ArrowRight'?1:XP.length-1))%XP.length;show(n);tabs.children[n].focus()}};tabs.appendChild(b)});
+  show(0);
+  const tbar=document.getElementById('tabbar'),tl=document.getElementById('tl'),tr=document.getElementById('tr');
+  const tabFade=()=>{const max=tabs.scrollWidth-tabs.clientWidth,L=tabs.scrollLeft>4,Rt=tabs.scrollLeft<max-4;
+    tl.hidden=!L;tr.hidden=!Rt;tbar.classList.toggle('fl',L);tbar.classList.toggle('fr',Rt)};
+  tl.onclick=()=>tabs.scrollBy({left:-240,behavior:'smooth'});
+  tr.onclick=()=>tabs.scrollBy({left:240,behavior:'smooth'});
+  tabs.addEventListener('scroll',tabFade,{passive:true});addEventListener('resize',tabFade);tabFade();
+  tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)b.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'})});
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){viewerSeen=true;const m=panel.querySelector('.mac');if(m)setTimeout(()=>m.classList.remove('shut'),250);o.disconnect()}}),{threshold:.3}).observe(panel);
+
+  // ── Highlights gallery
+  const g=document.getElementById('gallery'),dots=document.getElementById('dots'),cards=[...g.children];
+  const pad=()=>parseFloat(getComputedStyle(g).paddingLeft)||22;
+  cards.forEach((c,i)=>{const d=document.createElement('button');d.setAttribute('aria-label','Go to highlight '+(i+1));d.onclick=()=>go(i);dots.appendChild(d)});
+  function curCard(){if(g.scrollLeft>=g.scrollWidth-g.clientWidth-4)return cards.length-1;let best=0,min=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.scrollLeft-pad());if(d<min){min=d;best=i}});return best}
+  function mark(){const c=curCard();[...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===c))}
+  function go(i){i=Math.max(0,Math.min(cards.length-1,i));g.scrollTo({left:cards[i].offsetLeft-pad(),behavior:'smooth'})}
+  g.addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});
+  function leftCard(){let best=0,min=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-g.scrollLeft-pad());if(d<min){min=d;best=i}});return best}
+  document.getElementById('prev').onclick=()=>go(leftCard()-1);
+  document.getElementById('next').onclick=()=>{if(g.scrollLeft>=g.scrollWidth-g.clientWidth-4)return;go(leftCard()+1)};
+  mark();
+
+  // ── Copy email
+  const btn=document.getElementById('copy'),mail=document.getElementById('email');
+  const selectEl=el=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+  btn.onclick=()=>{const reset=()=>setTimeout(()=>btn.textContent='Copy email',1800);
+    const sel=()=>{selectEl(mail);btn.textContent='Selected';reset()};
+    try{navigator.clipboard.writeText(mail.textContent).then(()=>{btn.textContent='Copied';reset()},sel)}catch(e){sel()}};
+
+  // ── CV download (viewer-confirmed save when available, else open the PDF)
+  const cvBtn=document.getElementById('cvBtn'),cvStatus=document.getElementById('cvStatus');
+  let downloads=null;
+  if(window.claude&&claude.use)claude.use('downloads').then(d=>{downloads=d}).catch(()=>{});
+  cvBtn.addEventListener('click',async ev=>{
+    if(!downloads)return; // fall back to opening the PDF link
+    ev.preventDefault();
+    try{
+      const blob=await (await fetch('cv.pdf')).blob();
+      await downloads.save({filename:'CV_Alwiyah_Nur_Syahira_Alhaddad.pdf',data:blob});
+      cvStatus.textContent='CV saved.';
+    }catch(e){
+      if(e&&e.code==='declined'){cvStatus.textContent='Download cancelled.';return}
+      if(e&&e.code==='rate_limited'){cvStatus.textContent='A download prompt is already open.';return}
+      window.open('cv.pdf','_blank','noopener');
+    }
+  });
+
+  // ── Contact form → opens the visitor's email app with the message filled in
+  // Paste your Formspree form ID here (e.g. 'xyzabcd') to send messages straight to your inbox
+  const FORMSPREE_ID='xzedplkl';
+  const form=document.getElementById('form'),fs=document.getElementById('formStatus');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=id=>document.getElementById(id).value.trim();
+    const name=v('f-name'),from=v('f-email'),subj=v('f-subject'),msg=v('f-msg');
+    if(!name||!from||!msg){fs.innerHTML='<b>Add your name, email and message</b> before sending.';return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)){fs.innerHTML='<b>That email address looks incomplete.</b> Check it and try again.';return}
+    const body=`${msg}\n\n— ${name} (${from})`;
+    const url=`mailto:syahiiralhaddad@gmail.com?subject=${encodeURIComponent(subj||'Hello from your portfolio')}&body=${encodeURIComponent(body)}`;
+    if(FORMSPREE_ID){
+      fs.textContent='Sending…';
+      fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body:JSON.stringify({name,email:from,_replyto:from,_subject:subj||'Hello from your portfolio',message:msg})})
+      .then(r=>{if(!r.ok)throw 0;form.reset();fs.innerHTML='<b>Message sent.</b> Thanks, I\'ll get back to you soon.'})
+      .catch(()=>{fs.innerHTML='<b>The message didn\'t go through.</b> Email syahiiralhaddad@gmail.com directly.'});
+      return;
+    }
+    try{location.href=url}catch(_){}
+    fs.innerHTML='Your email app should open with this message ready to send. If nothing opens, email <b>syahiiralhaddad@gmail.com</b> directly.';
+  });
+})();
+</script>
+
+</body>
+</html>
